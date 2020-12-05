@@ -16,9 +16,19 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "mock": "cd mock-apis && npm run start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/index.js",
+      "!src/serviceWorker.js",
+      "!src/components/shared/*.js"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -33,6 +43,7 @@
       "not op_mini all"
     ],
     "development": [
+      "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
