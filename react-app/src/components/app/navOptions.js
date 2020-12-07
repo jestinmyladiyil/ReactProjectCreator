@@ -29,67 +29,67 @@ const navOptions = {
     {
       label: "Dashboard",
       path: "/dashboard",
-      icon: <FontAwesomeIcon className="icon" icon={faHome} />,
+      icon: <FontAwesomeIcon icon={faHome} />,
     },
     {
       label: "Layout Components",
-      icon: <FontAwesomeIcon className="icon" icon={faLaptopCode} />,
+      icon: <FontAwesomeIcon icon={faLaptopCode} />,
       subMenu: [
         {
           label: "Header",
           path: "/header",
-          icon: <FontAwesomeIcon className="icon" icon={faBars} />,
+          icon: <FontAwesomeIcon icon={faBars} />,
         },
         {
           label: "SideNav",
           path: "/sidenav",
-          icon: <FontAwesomeIcon className="icon" icon={faDirections} />,
+          icon: <FontAwesomeIcon icon={faDirections} />,
         },
         {
           label: "Loader",
           path: "/loader",
-          icon: <FontAwesomeIcon className="icon" icon={faSpinner} />,
+          icon: <FontAwesomeIcon icon={faSpinner} />,
         },
         {
           label: "Popup",
           path: "/popup",
-          icon: <FontAwesomeIcon className="icon" icon={faWindowRestore} />,
+          icon: <FontAwesomeIcon icon={faWindowRestore} />,
         },
         {
           label: "Table",
           path: "/table",
-          icon: <FontAwesomeIcon className="icon" icon={faTable} />,
+          icon: <FontAwesomeIcon icon={faTable} />,
         },
         {
           label: "SortIcon",
           path: "/sorticon",
-          icon: <FontAwesomeIcon className="icon" icon={faSort} />,
+          icon: <FontAwesomeIcon icon={faSort} />,
         },
         {
           label: "Pagination",
           path: "/pagination",
-          icon: <FontAwesomeIcon className="icon" icon={faListOl} />,
+          icon: <FontAwesomeIcon icon={faListOl} />,
         },
         {
           label: "AlertMessage",
           path: "/alertmessage",
-          icon: <FontAwesomeIcon className="icon" icon={faCommentAlt} />,
+          icon: <FontAwesomeIcon icon={faCommentAlt} />,
         },
         {
           label: "Tabs",
           path: "/tabs",
-          icon: <FontAwesomeIcon className="icon" icon={faTable} />,
+          icon: <FontAwesomeIcon icon={faTable} />,
         },
         {
           label: "ExpandCollapse",
           path: "/expandcollapse",
-          icon: <FontAwesomeIcon className="icon" icon={faDoorOpen} />,
+          icon: <FontAwesomeIcon icon={faDoorOpen} />,
         },
       ],
     },
     {
       label: "Form Components",
-      icon: <FontAwesomeIcon className="icon" icon={faFileCode} />,
+      icon: <FontAwesomeIcon icon={faFileCode} />,
       disabled: true,
       subMenu: [
         { label: "InputText", path: "" },

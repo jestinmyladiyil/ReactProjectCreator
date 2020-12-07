@@ -14,9 +14,10 @@ import ExpandCollapseUsage from "./../shared/expand-collapse/index.usage";
 import navOptions from "./navOptions";
 
 function App() {
+  const { logo, menu, settings } = navOptions;
   return (
     <HashRouter basename={process.env.PUBLIC_URL}>
-      <Header navOptions={navOptions} />
+      <Header logo={logo} menu={menu} settings={settings} />
       <div className="container">
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/header" component={HeaderUsage} />

@@ -9,7 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 class Header extends Component {
-  state = {};
+  state = {
+    showMenu: false,
+  };
 
   getMenuItem = (item) => {
     const { path, icon, label } = item;
@@ -33,83 +35,95 @@ class Header extends Component {
     );
   };
 
+  toggleMenu = () => this.setState({ showMenu: !this.state.showMenu });
+
   render() {
-    const { navOptions } = this.props;
-    const { logo, menu, settings } = navOptions || {};
+    const { logo, menu, settings } = this.props;
     const { userName, userCode, logoutUrl } = settings || {};
+    const { showMenu } = this.state;
+    let hamburgerClasses = `hamburger ${showMenu && "close"}`;
+    let ulClasses = showMenu && "show";
 
     return (
       <header>
-        {navOptions && (
-          <React.Fragment>
-            <NavLink to={logo.path} className="logo">
-              {logo.icon}
-            </NavLink>
+        <React.Fragment>
+          <NavLink to={logo.path} className="logo">
+            {logo.icon}
+          </NavLink>
 
-            {menu && (
-              <ul>
-                {menu.length > 0 &&
-                  menu.map((item) => (
-                    <li className={item.disabled ? "disabled" : ""}>
-                      {this.getMenuItem(item)}
+          <div className={hamburgerClasses} onClick={this.toggleMenu}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
 
-                      {item.subMenu && (
-                        <ul>
-                          {item.subMenu.length > 0 &&
-                            item.subMenu.map((subItem) => (
-                              <li
-                                className={subItem.disabled ? "disabled" : ""}
-                              >
-                                {this.getMenuItem(subItem)}
-                              </li>
-                            ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
+          {menu && (
+            <ul className={ulClasses}>
+              {menu.length > 0 &&
+                menu.map((item) => (
+                  <li className={item.disabled ? "disabled" : ""}>
+                    {this.getMenuItem(item)}
 
-                {settings && (
-                  <li>
-                    <div className="menu-item">
-                      <FontAwesomeIcon className="icon" icon={faUserCircle} />
-                      <span className="user">
-                        {userName}
-                        <div className="user-code">{userCode}</div>
-                      </span>
-                    </div>
-                    <ul>
-                      <li className="disabled">
-                        <div className="menu-item">
-                          <FontAwesomeIcon className="icon" icon={faGlobe} />
-                          <span>Change Language</span>
-                        </div>
-                      </li>
-                      <li className="disabled">
-                        <div className="menu-item">
-                          <FontAwesomeIcon className="icon" icon={faPalette} />
-                          <span>Change Theme</span>
-                        </div>
-                      </li>
-                      {logoutUrl && (
-                        <li>
-                          <a href={logoutUrl}>
-                            <div className="menu-item">
-                              <FontAwesomeIcon
-                                className="icon"
-                                icon={faSignOutAlt}
-                              />
-                              <span>Logout</span>
-                            </div>
-                          </a>
-                        </li>
-                      )}
-                    </ul>
+                    {item.subMenu && (
+                      <ul>
+                        {item.subMenu.length > 0 &&
+                          item.subMenu.map((subItem) => (
+                            <li
+                              className={
+                                item.disabled || subItem.disabled
+                                  ? "disabled"
+                                  : ""
+                              }
+                            >
+                              {this.getMenuItem(subItem)}
+                            </li>
+                          ))}
+                      </ul>
+                    )}
                   </li>
-                )}
-              </ul>
-            )}
-          </React.Fragment>
-        )}
+                ))}
+
+              {settings && (
+                <li>
+                  <div className="menu-item">
+                    <FontAwesomeIcon className="icon" icon={faUserCircle} />
+                    <span className="user">
+                      {userName}
+                      <div className="user-code">{userCode}</div>
+                    </span>
+                  </div>
+                  <ul>
+                    <li className="disabled">
+                      <div className="menu-item">
+                        <FontAwesomeIcon className="icon" icon={faGlobe} />
+                        <span>Change Language</span>
+                      </div>
+                    </li>
+                    <li className="disabled">
+                      <div className="menu-item">
+                        <FontAwesomeIcon className="icon" icon={faPalette} />
+                        <span>Change Theme</span>
+                      </div>
+                    </li>
+                    {logoutUrl && (
+                      <li>
+                        <a href={logoutUrl}>
+                          <div className="menu-item">
+                            <FontAwesomeIcon
+                              className="icon"
+                              icon={faSignOutAlt}
+                            />
+                            <span>Logout</span>
+                          </div>
+                        </a>
+                      </li>
+                    )}
+                  </ul>
+                </li>
+              )}
+            </ul>
+          )}
+        </React.Fragment>
       </header>
     );
   }
