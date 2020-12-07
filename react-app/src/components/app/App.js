@@ -1,5 +1,3 @@
-import "react-app-polyfill/ie11";
-import "react-app-polyfill/stable";
 import { HashRouter, Route, Redirect } from "react-router-dom";
 import Header from "./../shared/header";
 import Dashboard from "./../dashboard";
@@ -13,11 +11,12 @@ import PaginationUsage from "./../shared/pagination/index.usage";
 import AlertMessageUsage from "./../shared/alert-message/index.usage";
 import TabsUsage from "./../shared/tabs/index.usage";
 import ExpandCollapseUsage from "./../shared/expand-collapse/index.usage";
+import navOptions from "./navOptions";
 
 function App() {
   return (
     <HashRouter basename={process.env.PUBLIC_URL}>
-      <Header />
+      <Header navOptions={navOptions} />
       <div className="container">
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/header" component={HeaderUsage} />

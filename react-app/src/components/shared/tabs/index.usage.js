@@ -1,12 +1,23 @@
 import React, { Component } from "react";
+import CodeHighlighter from "../code-highlighter";
 
 class TabsUsage extends Component {
-  state = {};
+  code = (
+    <div>Your component usage should come here ..........................</div>
+  );
+
   render() {
     return (
-      <pre>
-        <code>Here's my Tabs code!</code>
-      </pre>
+      <React.Fragment>
+        <h1>Tabs</h1>
+        <div>Add some description here</div>
+        <br />
+        <h3>Preview</h3>
+        <div>{this.code}</div>
+        <br />
+        <h3>Usage</h3>
+        <CodeHighlighter>{this.code}</CodeHighlighter>
+      </React.Fragment>
     );
   }
 }

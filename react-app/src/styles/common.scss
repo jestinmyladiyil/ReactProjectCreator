@@ -38,5 +38,18 @@
   }
 }
 
+// CSS Variables
 :root {
+  --container-padding-lr: 1rem;
+
+  @include tablet {
+    --container-padding-lr: 3rem;
+  }
+
+  @include desktop {
+    --container-padding-lr: 6rem;
+  }
 }
+
+// SCSS Variables
+$header-height: 3rem;
