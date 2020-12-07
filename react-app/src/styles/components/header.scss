@@ -27,9 +27,12 @@ header {
     text-decoration: none;
     padding: 0.5rem 1rem;
     color: #fff;
+    transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: rgba(#000, 0.5);
+    @include desktop {
+      &:hover {
+        background-color: rgba(#000, 0.5);
+      }
     }
 
     @include tablet {
@@ -53,6 +56,11 @@ header {
     }
   }
 
+  .disabled {
+    cursor: none;
+    opacity: 0.5;
+  }
+
   .user {
     line-height: 1;
 
@@ -74,19 +82,7 @@ header {
       > li {
         display: flex;
         position: relative;
-
-        &:not(.disabled):hover {
-          background-color: rgba(#000, 0.5);
-
-          > ul {
-            display: flex;
-          }
-        }
-
-        &.disabled {
-          cursor: none;
-          opacity: 0.5;
-        }
+        transition: background-color 0.3s ease;
 
         > .menu-item.active {
           border-bottom: 4px solid #33b5e5;
@@ -94,29 +90,25 @@ header {
 
         ul {
           display: none;
-          flex-flow: column;
-          position: absolute;
-          top: $header-height;
-          right: 0;
-          min-width: 200px;
-          width: 100%;
-          border-radius: 0 0 6px 6px;
-          background-color: #212121;
+        }
 
-          li {
-            &:last-of-type {
-              padding-bottom: 6px;
-            }
+        &:not(.disabled):hover {
+          background-color: rgba(#000, 0.5);
 
-            &.disabled {
-              cursor: none;
-              opacity: 0.5;
-            }
+          ul {
+            display: flex;
+            flex-flow: column;
+            position: absolute;
+            top: $header-height;
+            right: 0;
+            min-width: 200px;
+            width: 100%;
+            border-radius: 0 0 6px 6px;
+            padding-bottom: 6px;
+            background-color: #212121;
 
-            .menu-item {
-              &.active {
-                border-left: 4px solid #33b5e5;
-              }
+            .menu-item.active {
+              border-left: 4px solid #33b5e5;
             }
           }
         }
@@ -174,8 +166,7 @@ header {
 
       &.show {
         $nav-width: 250px;
-        display: flex;
-        flex-flow: column;
+        display: block;
         position: fixed;
         top: $header-height;
         right: 0;
@@ -208,35 +199,22 @@ header {
         }
 
         li {
-          &.disabled {
-            cursor: none;
-            opacity: 0.5;
+          .menu-item.active {
+            border-left: 4px solid #33b5e5;
+          }
+
+          ul {
+            display: none;
           }
 
           &:not(.disabled):hover {
             ul {
               display: block;
-            }
-          }
 
-          ul {
-            display: none;
-
-            li {
               .menu-item {
                 padding-left: 2.5rem;
                 background-color: #161616;
               }
-            }
-          }
-
-          .menu-item {
-            &:hover {
-              background-color: rgba(#000, 0.5);
-            }
-
-            &.active {
-              border-left: 4px solid #33b5e5;
             }
           }
         }
