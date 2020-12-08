@@ -40,14 +40,17 @@
 
 // CSS Variables
 :root {
-  --container-padding-lr: 1rem;
+  --header-padding-lr: 1rem;
+  --nav-width: 100vw;
 
   @include tablet {
-    --container-padding-lr: 2rem;
+    --header-padding-lr: 2rem;
+    --nav-width: 230px;
   }
 
   @include desktop {
-    --container-padding-lr: 6rem;
+    --header-padding-lr: 6rem;
+    --nav-width: 250px;
   }
 }
 

@@ -9,7 +9,7 @@ header {
   position: relative;
   width: 100%;
   height: $header-height;
-  padding: 0 var(--container-padding-lr);
+  padding: 0 var(--header-padding-lr);
   background-color: #212121;
 
   .logo {
@@ -25,7 +25,7 @@ header {
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     color: #fff;
     transition: background-color 0.3s ease;
 
@@ -43,16 +43,17 @@ header {
     i,
     svg {
       margin-right: 0.5rem;
+      font-size: 1.2rem;
+      height: 1.2rem;
 
       @include tablet {
-        font-size: 1.2rem;
-        height: 1.2rem;
+        font-size: 1rem;
+        height: 1rem;
       }
+    }
 
-      @include desktop {
-        font-size: 1.5rem;
-        height: 1.5rem;
-      }
+    span {
+      line-height: 1.2;
     }
   }
 
@@ -61,12 +62,8 @@ header {
     opacity: 0.5;
   }
 
-  .user {
-    line-height: 1;
-
-    .user-code {
-      font-size: 0.85rem;
-    }
+  .user-code {
+    font-size: 0.85rem;
   }
 
   @include tablet-desktop {
@@ -106,6 +103,7 @@ header {
             border-radius: 0 0 6px 6px;
             padding-bottom: 6px;
             background-color: #212121;
+            z-index: 900;
 
             .menu-item.active {
               border-left: 4px solid #33b5e5;
@@ -142,7 +140,7 @@ header {
 
       &.close {
         position: fixed;
-        right: var(--container-padding-lr);
+        right: var(--header-padding-lr);
         z-index: 1000;
 
         .bar {
@@ -184,7 +182,7 @@ header {
           width: $nav-width;
           height: $header-height;
           background-color: #212121;
-          z-index: 800;
+          z-index: 900;
         }
 
         &:after {

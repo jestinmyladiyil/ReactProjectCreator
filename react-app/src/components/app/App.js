@@ -18,6 +18,7 @@ function App() {
   return (
     <HashRouter basename={process.env.PUBLIC_URL}>
       <Header logo={logo} menu={menu} settings={settings} />
+      {/* <SideNav logo={logo} menu={menu} settings={settings} /> */}
       <div className="container">
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/header" component={HeaderUsage} />
