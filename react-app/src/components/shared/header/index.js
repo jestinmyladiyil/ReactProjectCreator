@@ -9,9 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 class Header extends Component {
-  state = {
-    showMenu: false,
-  };
+  state = { showMenu: false };
 
   getMenuItem = (item) => {
     const { path, icon, label } = item;
@@ -44,7 +42,6 @@ class Header extends Component {
 
     const { showMenu } = this.state;
     let hamburgerClasses = `hamburger ${showMenu && "close"}`;
-    let ulClasses = showMenu && "show";
 
     return (
       <header>
@@ -59,7 +56,7 @@ class Header extends Component {
         </div>
 
         {menu && (
-          <ul className={ulClasses}>
+          <ul className={showMenu && "show"}>
             {menu.length > 0 &&
               menu.map((item) => (
                 <li className={item.disabled ? "disabled" : ""}>
