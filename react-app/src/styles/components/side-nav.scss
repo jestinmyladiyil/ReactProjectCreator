@@ -28,16 +28,25 @@ nav {
     text-decoration: none;
     padding: 0.8rem 1rem;
     color: #fff;
-    transition: background-color 0.3s ease;
 
     @include desktop {
-      &:hover {
-        background-color: rgba(#000, 0.5);
+      &:not(.disabled):hover {
+        img,
+        i,
+        svg {
+          font-size: 1.6rem;
+          height: 1.6rem;
+        }
       }
     }
 
     &.active {
       border-left: 4px solid #33b5e5;
+    }
+
+    &.disabled {
+      cursor: none;
+      opacity: 0.5;
     }
 
     img,
@@ -46,6 +55,7 @@ nav {
       font-size: 1.2rem;
       height: 1.2rem;
       margin-right: 0.5rem;
+      transition: height 0.2s ease, font-size 0.2s ease;
     }
 
     span {
@@ -53,17 +63,8 @@ nav {
     }
   }
 
-  .disabled {
-    cursor: none;
-    opacity: 0.5;
-  }
-
   .user {
     border-bottom: 2px solid rgba(#000, 0.5);
-
-    &:hover {
-      background-color: transparent;
-    }
 
     .user-code {
       font-size: 0.85rem;
@@ -73,25 +74,16 @@ nav {
   .menu {
     height: 100%;
     overflow-y: auto;
+
+    .sub-menu {
+      .menu-item {
+        padding-left: 3rem;
+        background-color: rgba(#000, 0.5);
+      }
+    }
   }
 
   .logout {
-    background-color: rgba(#000, 0.5);
-  }
-
-  > ul {
-    > li {
-      .menu-item {
-      }
-
-      ul {
-        // display: none;
-
-        li {
-          .menu-item {
-          }
-        }
-      }
-    }
+    border-top: 2px solid rgba(#000, 0.5);
   }
 }

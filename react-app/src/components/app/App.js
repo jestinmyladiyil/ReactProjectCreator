@@ -1,5 +1,6 @@
 import { HashRouter, Route, Redirect } from "react-router-dom";
 import Header from "./../shared/header";
+import SideNav from "./../shared/side-nav";
 import Dashboard from "./../dashboard";
 import HeaderUsage from "./../shared/header/index.usage";
 import SideNavUsage from "./../shared/side-nav/index.usage";
