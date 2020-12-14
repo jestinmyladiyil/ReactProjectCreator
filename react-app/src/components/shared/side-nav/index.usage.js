@@ -56,7 +56,6 @@ class SideNavUsage extends Component {
     return (
       <React.Fragment>
         <h1>SideNav</h1>
-        <div>Add some description here</div>
         <br />
         <h3>Preview</h3>
         <div className="viewport">{this.code}</div>

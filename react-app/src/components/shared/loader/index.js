@@ -3,7 +3,17 @@ import React, { Component } from "react";
 class Loader extends Component {
   state = {};
   render() {
-    return <React.Fragment></React.Fragment>;
+    const { show, showFull } = this.props;
+    return (
+      <React.Fragment>
+        {showFull && (
+          <div className="glasspane">
+            <div className="spinner"></div>
+          </div>
+        )}
+        {show && <div className="spinner small"></div>}
+      </React.Fragment>
+    );
   }
 }
 
