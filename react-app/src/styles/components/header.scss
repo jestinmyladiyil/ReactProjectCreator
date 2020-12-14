@@ -118,6 +118,10 @@ header {
     .hamburger {
       position: absolute;
       right: var(--header-padding-lr);
+
+      &.close {
+        position: fixed;
+      }
     }
 
     > ul {

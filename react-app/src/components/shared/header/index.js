@@ -41,7 +41,7 @@ class Header extends Component {
       settings || {};
 
     const { showMenu } = this.state;
-    let hamburgerClasses = `hamburger ${showMenu && "close"}`;
+    let hamburgerClasses = `hamburger ${showMenu ? "close" : ""}`;
 
     return (
       <header>
@@ -56,17 +56,18 @@ class Header extends Component {
         </div>
 
         {menu && (
-          <ul className={showMenu && "show"}>
+          <ul className={showMenu ? "show" : ""}>
             {menu.length > 0 &&
-              menu.map((item) => (
-                <li className={item.disabled ? "disabled" : ""}>
+              menu.map((item, i) => (
+                <li key={i} className={item.disabled ? "disabled" : ""}>
                   {this.getMenuItem(item)}
 
                   {item.subMenu && (
                     <ul>
                       {item.subMenu.length > 0 &&
-                        item.subMenu.map((subItem) => (
+                        item.subMenu.map((subItem, j) => (
                           <li
+                            key={j}
                             className={
                               item.disabled || subItem.disabled
                                 ? "disabled"

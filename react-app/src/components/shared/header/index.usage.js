@@ -59,7 +59,7 @@ class HeaderUsage extends Component {
         <div>Add some description here</div>
         <br />
         <h3>Preview</h3>
-        <div>{this.code}</div>
+        <div className="viewport">{this.code}</div>
         <br />
         <h3>Usage</h3>
         <CodeHighlighter language="html">

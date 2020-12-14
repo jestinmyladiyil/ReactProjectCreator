@@ -53,8 +53,9 @@ nav + .container {
   width: 100%;
   height: 100vh;
   background-color: #e0e0e0;
+  z-index: 800;
 
-  .nav-hamburger {
+  .hamburger {
     position: absolute;
   }
 

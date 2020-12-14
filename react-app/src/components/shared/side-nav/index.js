@@ -14,7 +14,7 @@ class SideNav extends Component {
 
   getMenuItem = (item) => {
     const { path, icon, label, disabled } = item;
-    let classes = `menu-item ${disabled && "disabled"}`;
+    let classes = `menu-item ${disabled ? "disabled" : ""}`;
 
     return (
       <React.Fragment>
@@ -43,7 +43,7 @@ class SideNav extends Component {
       settings || {};
 
     const { showMenu } = this.state;
-    let hamburgerClasses = `hamburger nav-hamburger ${showMenu && "close"}`;
+    let hamburgerClasses = `hamburger nav-hamburger ${showMenu ? "close" : ""}`;
 
     return (
       <React.Fragment>
@@ -53,7 +53,7 @@ class SideNav extends Component {
           <div className="bar"></div>
         </div>
 
-        <nav className={showMenu && "show"}>
+        <nav className={showMenu ? "show" : ""}>
           {logo && (
             <NavLink to={logo.path} className="logo">
               {logo.icon}
@@ -75,15 +75,16 @@ class SideNav extends Component {
           <div className="menu">
             {menu &&
               menu.length > 0 &&
-              menu.map((item) => (
+              menu.map((item, i) => (
                 <ExpandCollapse
+                  key={i}
                   collapse={true}
                   collapsible={this.getMenuItem(item)}
                 >
                   {item.subMenu &&
                     item.subMenu.length > 0 &&
-                    item.subMenu.map((subItem) => (
-                      <div className="sub-menu">
+                    item.subMenu.map((subItem, j) => (
+                      <div key={j} className="sub-menu">
                         {this.getMenuItem(subItem)}
                       </div>
                     ))}
