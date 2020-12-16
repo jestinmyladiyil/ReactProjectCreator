@@ -8,6 +8,7 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import ExpandCollapse from "./../expand-collapse/index";
+import Hamburger from "./../hamburger/index";
 
 class SideNav extends Component {
   state = { showMenu: false };
@@ -35,7 +36,7 @@ class SideNav extends Component {
     );
   };
 
-  toggleMenu = () => this.setState({ showMenu: !this.state.showMenu });
+  toggleMenu = (isClose) => this.setState({ showMenu: isClose });
 
   render() {
     const { logo, menu, settings } = this.props;
@@ -47,11 +48,7 @@ class SideNav extends Component {
 
     return (
       <React.Fragment>
-        <div className={hamburgerClasses} onClick={this.toggleMenu}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
+        <Hamburger className="nav-hamburger" onChange={this.toggleMenu} />
 
         <nav className={showMenu ? "show" : ""}>
           {logo && (

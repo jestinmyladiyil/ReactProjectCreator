@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class ExpandCollapse extends Component {
   state = {
@@ -19,6 +21,12 @@ class ExpandCollapse extends Component {
         {collapsible && (
           <div className="collapsible" onClick={this.toggleExpandCollapse}>
             {collapsible}
+            {children && (
+              <FontAwesomeIcon
+                icon={collapse ? faAngleDown : faAngleUp}
+                className="collapse-arrow"
+              />
+            )}
           </div>
         )}
         {children && (

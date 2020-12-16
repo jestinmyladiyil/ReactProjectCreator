@@ -55,6 +55,22 @@ header {
     span {
       line-height: 1.2;
     }
+
+    .submenu-arrow {
+      font-size: 0.8rem !important;
+      height: 0.8rem !important;
+
+      @include tablet-desktop {
+        margin-right: 0 !important;
+        margin-left: 0.5rem !important;
+      }
+
+      @include mobile {
+        position: absolute;
+        right: 1rem;
+        margin: 0 !important;
+      }
+    }
   }
 
   .disabled {
@@ -67,10 +83,6 @@ header {
   }
 
   @include tablet-desktop {
-    .hamburger {
-      display: none;
-    }
-
     > ul {
       display: flex;
       flex-flow: row;
@@ -136,7 +148,7 @@ header {
         width: $nav-width;
         height: calc(100vh - #{$header-height});
         background-color: #212121;
-        overflow-y: auto;
+        overflow-y: scroll;
         z-index: 900;
 
         &:before {

@@ -73,15 +73,15 @@ class HeaderUsage extends Component {
         <br />
         To configure logo in Header:
         <CodeHighlighter language="js">{`
-let logo = {
-  path: "/dashboard",  // path to redirect on clicking logo
+logo = {
+  path: "/dashboard",  // Path to redirect on clicking logo
   icon: <img className="logo" src={logo} alt="Logo" />  // img tag for logo
 }
         `}</CodeHighlighter>
         <br />
         To configure menu items in Header:
         <CodeHighlighter language="js">{`
-let menu = [
+menu = [
   {
     label: "Dashboard",  // Text to display the menu item
     path: "/dashboard",  // Path to navigate on clicking menu item
@@ -109,7 +109,7 @@ let menu = [
         <br />
         To configure Settings menu in Header:
         <CodeHighlighter language="js">{`
-let settings = {
+settings = {
   userName: "Mounish Kumar",  // User name to display in the last menu item
   userCode: "GBS04420",  // User code to display
   logoutUrl: "https://www.google.com",  // URL to redirect on clicking logout

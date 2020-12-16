@@ -1,11 +1,5 @@
 @import "../common.scss";
 
-@include tablet-desktop {
-  .nav-hamburger {
-    display: none;
-  }
-}
-
 @include mobile {
   .nav-hamburger {
     position: fixed;
@@ -61,8 +55,8 @@ nav {
         img,
         i,
         svg {
-          font-size: 1.6rem;
-          height: 1.6rem;
+          font-size: 1.4rem;
+          height: 1.4rem;
         }
       }
     }
@@ -90,6 +84,10 @@ nav {
     }
   }
 
+  .collapse-arrow {
+    color: #fff;
+  }
+
   .user {
     border-bottom: 2px solid rgba(#000, 0.5);
 
@@ -100,7 +98,7 @@ nav {
 
   .menu {
     height: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
 
     .sub-menu {
       .menu-item {

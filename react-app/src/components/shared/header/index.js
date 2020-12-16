@@ -6,13 +6,15 @@ import {
   faPalette,
   faSignOutAlt,
   faUserCircle,
+  faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
+import Hamburger from "./../hamburger/index";
 
 class Header extends Component {
   state = { showMenu: false };
 
   getMenuItem = (item) => {
-    const { path, icon, label } = item;
+    const { path, icon, label, disabled, subMenu } = item;
 
     return (
       <React.Fragment>
@@ -27,13 +29,16 @@ class Header extends Component {
           <div className="menu-item">
             {icon}
             <span>{label}</span>
+            {subMenu && subMenu.length > 0 && !disabled && (
+              <FontAwesomeIcon icon={faAngleDown} className="submenu-arrow" />
+            )}
           </div>
         )}
       </React.Fragment>
     );
   };
 
-  toggleMenu = () => this.setState({ showMenu: !this.state.showMenu });
+  toggleMenu = (isClose) => this.setState({ showMenu: isClose });
 
   render() {
     const { logo, menu, settings } = this.props;
@@ -41,7 +46,6 @@ class Header extends Component {
       settings || {};
 
     const { showMenu } = this.state;
-    let hamburgerClasses = `hamburger ${showMenu ? "close" : ""}`;
 
     return (
       <header>
@@ -49,11 +53,7 @@ class Header extends Component {
           {logo.icon}
         </NavLink>
 
-        <div className={hamburgerClasses} onClick={this.toggleMenu}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
+        <Hamburger onChange={this.toggleMenu} />
 
         {menu && (
           <ul className={showMenu ? "show" : ""}>
@@ -90,6 +90,10 @@ class Header extends Component {
                     {userName || "Welcome"}
                     <div className="user-code">{userCode}</div>
                   </span>
+                  <FontAwesomeIcon
+                    icon={faAngleDown}
+                    className="submenu-arrow"
+                  />
                 </div>
                 <ul>
                   {changeLanguage && (
