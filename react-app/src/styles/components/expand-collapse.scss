@@ -1,1 +1,20 @@
 @import "../common.scss";
+
+.collapsible {
+  cursor: pointer;
+  position: relative;
+
+  .collapse-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    height: 0.8rem;
+  }
+}
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}

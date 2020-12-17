@@ -24,6 +24,8 @@ const navOptions = {
     userName: "Mounish Kumar",
     userCode: "GBS04420",
     logoutUrl: "https://www.google.com",
+    changeLanguage: true,
+    changeTheme: true,
   },
   menu: [
     {

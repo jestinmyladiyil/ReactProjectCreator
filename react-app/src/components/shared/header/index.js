@@ -6,15 +6,15 @@ import {
   faPalette,
   faSignOutAlt,
   faUserCircle,
+  faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
+import Hamburger from "./../hamburger/index";
 
 class Header extends Component {
-  state = {
-    showMenu: false,
-  };
+  state = { showMenu: false };
 
   getMenuItem = (item) => {
-    const { path, icon, label } = item;
+    const { path, icon, label, disabled, subMenu } = item;
 
     return (
       <React.Fragment>
@@ -29,101 +29,107 @@ class Header extends Component {
           <div className="menu-item">
             {icon}
             <span>{label}</span>
+            {subMenu && subMenu.length > 0 && !disabled && (
+              <FontAwesomeIcon icon={faAngleDown} className="submenu-arrow" />
+            )}
           </div>
         )}
       </React.Fragment>
     );
   };
 
-  toggleMenu = () => this.setState({ showMenu: !this.state.showMenu });
+  toggleMenu = (isClose) => this.setState({ showMenu: isClose });
 
   render() {
     const { logo, menu, settings } = this.props;
-    const { userName, userCode, logoutUrl } = settings || {};
+    const { userName, userCode, logoutUrl, changeLanguage, changeTheme } =
+      settings || {};
+
     const { showMenu } = this.state;
-    let hamburgerClasses = `hamburger ${showMenu && "close"}`;
-    let ulClasses = showMenu && "show";
 
     return (
       <header>
-        <React.Fragment>
-          <NavLink to={logo.path} className="logo">
-            {logo.icon}
-          </NavLink>
+        <NavLink to={logo.path} className="logo">
+          {logo.icon}
+        </NavLink>
 
-          <div className={hamburgerClasses} onClick={this.toggleMenu}>
-            <div className="bar"></div>
-            <div className="bar"></div>
-            <div className="bar"></div>
-          </div>
+        <Hamburger onChange={this.toggleMenu} />
 
-          {menu && (
-            <ul className={ulClasses}>
-              {menu.length > 0 &&
-                menu.map((item) => (
-                  <li className={item.disabled ? "disabled" : ""}>
-                    {this.getMenuItem(item)}
+        {menu && (
+          <ul className={showMenu ? "show" : ""}>
+            {menu.length > 0 &&
+              menu.map((item, i) => (
+                <li key={i} className={item.disabled ? "disabled" : ""}>
+                  {this.getMenuItem(item)}
 
-                    {item.subMenu && (
-                      <ul>
-                        {item.subMenu.length > 0 &&
-                          item.subMenu.map((subItem) => (
-                            <li
-                              className={
-                                item.disabled || subItem.disabled
-                                  ? "disabled"
-                                  : ""
-                              }
-                            >
-                              {this.getMenuItem(subItem)}
-                            </li>
-                          ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
+                  {item.subMenu && (
+                    <ul>
+                      {item.subMenu.length > 0 &&
+                        item.subMenu.map((subItem, j) => (
+                          <li
+                            key={j}
+                            className={
+                              item.disabled || subItem.disabled
+                                ? "disabled"
+                                : ""
+                            }
+                          >
+                            {this.getMenuItem(subItem)}
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
 
-              {settings && (
-                <li>
-                  <div className="menu-item">
-                    <FontAwesomeIcon className="icon" icon={faUserCircle} />
-                    <span className="user">
-                      {userName}
-                      <div className="user-code">{userCode}</div>
-                    </span>
-                  </div>
-                  <ul>
+            {settings && (
+              <li>
+                <div className="menu-item">
+                  <FontAwesomeIcon className="icon" icon={faUserCircle} />
+                  <span>
+                    {userName || "Welcome"}
+                    <div className="user-code">{userCode}</div>
+                  </span>
+                  <FontAwesomeIcon
+                    icon={faAngleDown}
+                    className="submenu-arrow"
+                  />
+                </div>
+                <ul>
+                  {changeLanguage && (
                     <li className="disabled">
                       <div className="menu-item">
                         <FontAwesomeIcon className="icon" icon={faGlobe} />
                         <span>Change Language</span>
                       </div>
                     </li>
+                  )}
+                  {changeTheme && (
                     <li className="disabled">
                       <div className="menu-item">
                         <FontAwesomeIcon className="icon" icon={faPalette} />
                         <span>Change Theme</span>
                       </div>
                     </li>
-                    {logoutUrl && (
-                      <li>
-                        <a href={logoutUrl}>
-                          <div className="menu-item">
-                            <FontAwesomeIcon
-                              className="icon"
-                              icon={faSignOutAlt}
-                            />
-                            <span>Logout</span>
-                          </div>
-                        </a>
-                      </li>
-                    )}
-                  </ul>
-                </li>
-              )}
-            </ul>
-          )}
-        </React.Fragment>
+                  )}
+                  {logoutUrl && (
+                    <li>
+                      <a href={logoutUrl}>
+                        <div className="menu-item">
+                          <FontAwesomeIcon
+                            className="icon"
+                            icon={faSignOutAlt}
+                          />
+                          <span>Logout</span>
+                        </div>
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </li>
+            )}
+          </ul>
+        )}
       </header>
     );
   }

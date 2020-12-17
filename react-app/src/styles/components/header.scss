@@ -9,7 +9,7 @@ header {
   position: relative;
   width: 100%;
   height: $header-height;
-  padding: 0 var(--container-padding-lr);
+  padding: 0 var(--header-padding-lr);
   background-color: #212121;
 
   .logo {
@@ -25,7 +25,7 @@ header {
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     color: #fff;
     transition: background-color 0.3s ease;
 
@@ -43,15 +43,32 @@ header {
     i,
     svg {
       margin-right: 0.5rem;
+      font-size: 1.2rem;
+      height: 1.2rem;
 
       @include tablet {
-        font-size: 1.2rem;
-        height: 1.2rem;
+        font-size: 1rem;
+        height: 1rem;
+      }
+    }
+
+    span {
+      line-height: 1.2;
+    }
+
+    .submenu-arrow {
+      font-size: 0.8rem !important;
+      height: 0.8rem !important;
+
+      @include tablet-desktop {
+        margin-right: 0 !important;
+        margin-left: 0.5rem !important;
       }
 
-      @include desktop {
-        font-size: 1.5rem;
-        height: 1.5rem;
+      @include mobile {
+        position: absolute;
+        right: 1rem;
+        margin: 0 !important;
       }
     }
   }
@@ -61,19 +78,11 @@ header {
     opacity: 0.5;
   }
 
-  .user {
-    line-height: 1;
-
-    .user-code {
-      font-size: 0.85rem;
-    }
+  .user-code {
+    font-size: 0.85rem;
   }
 
   @include tablet-desktop {
-    .hamburger {
-      display: none;
-    }
-
     > ul {
       display: flex;
       flex-flow: row;
@@ -106,6 +115,7 @@ header {
             border-radius: 0 0 6px 6px;
             padding-bottom: 6px;
             background-color: #212121;
+            z-index: 900;
 
             .menu-item.active {
               border-left: 4px solid #33b5e5;
@@ -118,46 +128,11 @@ header {
 
   @include mobile {
     .hamburger {
-      $bar-height: 4px;
-      $bar-gap: 7px;
-      cursor: pointer;
-      display: block;
-      width: (3 * $bar-height) + (2 * $bar-gap);
-
-      .bar {
-        width: 100%;
-        height: $bar-height;
-        border-radius: 6px;
-        background-color: #33b5e5;
-        transition: transform 0.3s ease;
-
-        &:nth-of-type(1) {
-          transform: translateY(calc(0px - #{$bar-gap}));
-        }
-
-        &:nth-of-type(3) {
-          transform: translateY($bar-gap);
-        }
-      }
+      position: absolute;
+      right: var(--header-padding-lr);
 
       &.close {
         position: fixed;
-        right: var(--container-padding-lr);
-        z-index: 1000;
-
-        .bar {
-          &:nth-of-type(1) {
-            transform: translateY($bar-height) rotateZ(-45deg);
-          }
-
-          &:nth-of-type(2) {
-            opacity: 0;
-          }
-
-          &:nth-of-type(3) {
-            transform: translateY(calc(0px - #{$bar-height})) rotate(45deg);
-          }
-        }
       }
     }
 
@@ -173,7 +148,7 @@ header {
         width: $nav-width;
         height: calc(100vh - #{$header-height});
         background-color: #212121;
-        overflow-y: auto;
+        overflow-y: scroll;
         z-index: 900;
 
         &:before {
@@ -184,7 +159,7 @@ header {
           width: $nav-width;
           height: $header-height;
           background-color: #212121;
-          z-index: 800;
+          z-index: 900;
         }
 
         &:after {
