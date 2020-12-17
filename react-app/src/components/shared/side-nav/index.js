@@ -42,9 +42,7 @@ class SideNav extends Component {
     const { logo, menu, settings } = this.props;
     const { userName, userCode, logoutUrl, changeLanguage, changeTheme } =
       settings || {};
-
     const { showMenu } = this.state;
-    let hamburgerClasses = `hamburger nav-hamburger ${showMenu ? "close" : ""}`;
 
     return (
       <React.Fragment>
