@@ -10,6 +10,10 @@ class Pagination extends Component {
 
   pageSizeOptions = [5, 10, 20, 50, 100];
 
+  componentDidMount() {
+    this.props.paginateOnLoad && this.navigateTo(1);
+  }
+
   handlePageSizeChange = (event) => {
     this.setState({ pageSize: event.target.value }, () => this.navigateTo(1));
   };

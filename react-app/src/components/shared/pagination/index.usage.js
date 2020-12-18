@@ -10,7 +10,13 @@ class PaginationUsage extends Component {
     console.log("Page End Index = " + page.endIndex);
   };
 
-  code = (<Pagination totalItems={45} onPaginate={this.handlePaginate} />);
+  code = (
+    <Pagination
+      totalItems={45}
+      onPaginate={this.handlePaginate}
+      paginateOnLoad={true}
+    />
+  );
 
   render() {
     return (
@@ -26,6 +32,7 @@ class PaginationUsage extends Component {
 <Pagination
   totalItems={45}
   onPaginate={this.handlePaginate}
+  paginateOnLoad={true}
 />
           `}
         </CodeHighlighter>
@@ -40,6 +47,13 @@ handlePaginate = (page) => {
   console.log("Page End Index = " + page.endIndex);
   // Your fetch call here
 };
+          `}
+        </CodeHighlighter>
+        <br />
+        To call onPaginate method on component load
+        <CodeHighlighter language="js">
+          {`
+paginateOnLoad={true}
           `}
         </CodeHighlighter>
       </React.Fragment>
