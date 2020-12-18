@@ -4,34 +4,63 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Popup extends Component {
   state = {};
+
   render() {
     const {
       header,
+      onClose,
       children,
       footer,
-      onPrimaryBtnClick,
-      onClose,
-      primaryBtnLabel,
-      secondaryBtnLabel,
-      size, // top, bottom, right, left, top-right, top-left, bottom-right, bottom-left
-      position, // small, medium, large, xlarge
+      primaryBtn,
+      secondaryBtn,
+      size, // small, medium, large, xlarge
+      position, // center, top, bottom, right, left, top-right, top-left, bottom-right, bottom-left
     } = this.props;
+
+    const {
+      label: primaryBtnLabel,
+      onClick: onPrimaryBtnClick,
+      disabled: primaryBtnDisabled,
+    } = primaryBtn || {};
+
+    const {
+      label: secondaryBtnLabel,
+      onClick: onSecondaryBtnClick,
+      disabled: secondaryBtnDisabled,
+    } = secondaryBtn || {};
+
     return (
       <div className="glasspane">
-        <div className={`modal ${size} ${position}`}>
+        <div
+          className={`modal ${size ? size : "medium"} 
+            ${position ? position : "center"}`}
+        >
           <div className="modal-header">
-            {header}
-            <FontAwesomeIcon icon={faTimes} onClick={onClose} />
+            {typeof header === "string" ? <h2>{header}</h2> : header}
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="close"
+              onClick={onClose || onSecondaryBtnClick}
+            />
           </div>
+
           <div className="modal-body">{children}</div>
+
           <div className="modal-footer">
             {footer || (
               <React.Fragment>
-                <button onClick={onClose}>
-                  {secondaryBtnLabel || "Cancel"}
+                <button
+                  onClick={onSecondaryBtnClick || onClose}
+                  disabled={primaryBtnDisabled}
+                >
+                  {secondaryBtnLabel || "No"}
                 </button>
-                <button className="primary" onClick={onPrimaryBtnClick}>
-                  {primaryBtnLabel || "Save"}
+                <button
+                  className="primary"
+                  onClick={onPrimaryBtnClick}
+                  disabled={secondaryBtnDisabled}
+                >
+                  {primaryBtnLabel || "Yes"}
                 </button>
               </React.Fragment>
             )}
