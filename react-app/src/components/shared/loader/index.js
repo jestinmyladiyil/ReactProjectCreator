@@ -8,7 +8,7 @@ class Loader extends Component {
       <React.Fragment>
         {showFull && (
           <div className="glasspane">
-            <div className="spinner"></div>
+            <div className="spinner large"></div>
           </div>
         )}
         {show && <div className="spinner small"></div>}

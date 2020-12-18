@@ -1,16 +1,19 @@
 @import "../common.scss";
 
 .spinner {
-  $size: 50px;
-  position: absolute;
-  top: calc(50% - #{$size} / 2);
-  left: calc(50% - #{$size} / 2);
   border: 5px solid rgba(#000, 0.2);
   animation: spin 1s linear infinite;
   border-top: 5px solid #33b5e5;
   border-radius: 50%;
-  width: $size;
-  height: $size;
+
+  &.large {
+    $size: 50px;
+    width: $size;
+    height: $size;
+    position: absolute;
+    top: calc(50% - #{$size} / 2);
+    left: calc(50% - #{$size} / 2);
+  }
 
   &.small {
     border-width: 3px;
