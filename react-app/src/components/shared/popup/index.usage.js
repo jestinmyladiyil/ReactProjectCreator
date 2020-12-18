@@ -143,6 +143,16 @@ size="medium"  // Values can be "small", "medium", "large", "xlarge".
 position="center"  // Values can be "center", "top", "bottom", "right", "left", "top-right", "top-left", "bottom-right", "bottom-left".
 // If value is not given, takes "center" by default.
         `}</CodeHighlighter>
+        <br />
+        If you want different footer instead of primary and secondary buttons,
+        you can pass JSX into popup footer
+        <CodeHighlighter language="html">{`
+footer = (
+  <React.Fragment>
+    <input type="checkbox" /> Accept terms and conditions
+  </React.Fragment>
+);
+        `}</CodeHighlighter>
       </React.Fragment>
     );
   }
