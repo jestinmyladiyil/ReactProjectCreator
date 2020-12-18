@@ -38,6 +38,7 @@ handlePaginate = (page) => {
   console.log("Page Size = " + page.pageSize);
   console.log("Page Start Index = " + page.startIndex);
   console.log("Page End Index = " + page.endIndex);
+  // Your fetch call here
 };
           `}
         </CodeHighlighter>
