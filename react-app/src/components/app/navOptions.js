@@ -9,7 +9,6 @@ import {
   faHome,
   faLaptopCode,
   faListOl,
-  faSort,
   faSpinner,
   faTable,
   faWindowRestore,
@@ -61,11 +60,6 @@ const navOptions = {
           label: "Table",
           path: "/table",
           icon: <FontAwesomeIcon icon={faTable} />,
-        },
-        {
-          label: "SortIcon",
-          path: "/sorticon",
-          icon: <FontAwesomeIcon icon={faSort} />,
         },
         {
           label: "Pagination",

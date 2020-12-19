@@ -6,7 +6,6 @@ import SideNavUsage from "./../shared/side-nav/index.usage";
 import LoaderUsage from "./../shared/loader/index.usage";
 import PopupUsage from "./../shared/popup/index.usage";
 import TableUsage from "./../shared/table/index.usage";
-import SortIconUsage from "./../shared/sort-icon/index.usage";
 import PaginationUsage from "./../shared/pagination/index.usage";
 import AlertMessageUsage from "./../shared/alert-message/index.usage";
 import TabsUsage from "./../shared/tabs/index.usage";
@@ -26,7 +25,6 @@ function App() {
         <Route path="/loader" component={LoaderUsage} />
         <Route path="/popup" component={PopupUsage} />
         <Route path="/table" component={TableUsage} />
-        <Route path="/sorticon" component={SortIconUsage} />
         <Route path="/pagination" component={PaginationUsage} />
         <Route path="/alertmessage" component={AlertMessageUsage} />
         <Route path="/tabs" component={TabsUsage} />
