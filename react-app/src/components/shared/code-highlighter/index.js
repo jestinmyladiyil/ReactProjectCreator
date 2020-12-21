@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Prism from "prismjs";
 import jsxToString from "jsx-to-string";
+import { isString, isObject } from "../../../utilities/utils";
 
 class CodeHighlighter extends Component {
   state = {};
@@ -13,9 +14,9 @@ class CodeHighlighter extends Component {
     const { language, children } = this.props;
     let classes = `language-${language ? language : "html"}`;
     let codeToHighlight = null;
-    if (typeof children === "string") {
+    if (isString(children)) {
       codeToHighlight = children.trim();
-    } else if (typeof children === "object") {
+    } else if (isObject(children)) {
       if ("js" === language) {
         codeToHighlight = JSON.stringify(children, null, 2);
       } else {

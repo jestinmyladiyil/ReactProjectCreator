@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { isString } from "../../../utilities/utils";
 
 class Popup extends Component {
   state = {};
@@ -36,7 +37,7 @@ class Popup extends Component {
             ${position ? position : "center"}`}
         >
           <div className="modal-header">
-            {typeof header === "string" ? <h2>{header}</h2> : header}
+            {isString(header) ? <h2>{header}</h2> : header}
             <FontAwesomeIcon
               icon={faTimes}
               className="close"

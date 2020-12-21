@@ -9,7 +9,7 @@ input[type="submit"] {
   border: none;
   border-radius: 6px;
   background-color: #e0e0e0;
-  transition: 0.2s background-color;
+  transition: background-color 0.3s ease;
 
   &:not(.disabled):hover {
     background-color: #bdbdbd;

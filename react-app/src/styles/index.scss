@@ -60,6 +60,31 @@ nav + .container {
   z-index: 1000;
 }
 
+@include mobile {
+  .mobile-hide {
+    display: none;
+  }
+}
+
+@include tablet {
+  .tablet-hide {
+    display: none;
+  }
+}
+
+@include desktop {
+  .desktop-hide {
+    display: none;
+  }
+}
+
+.anchor {
+  cursor: pointer;
+  color: #0d47a1;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 .viewport {
   position: relative;
   width: 100%;

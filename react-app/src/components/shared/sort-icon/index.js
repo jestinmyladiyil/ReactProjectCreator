@@ -14,6 +14,7 @@ class SortIcon extends Component {
     return (
       <FontAwesomeIcon
         icon={icon}
+        className="sort-icon"
         onClick={() => {
           const newOrder = !order ? "asc" : order === "asc" ? "desc" : "asc";
           onSort(newOrder);

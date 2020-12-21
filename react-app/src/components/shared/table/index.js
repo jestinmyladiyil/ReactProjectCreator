@@ -31,7 +31,10 @@ class Table extends Component {
         <thead>
           <tr>
             {keys.map((key) => (
-              <td>
+              <th
+                key={key}
+                className={mapping[key].hideInMobile ? "mobile-hide" : ""}
+              >
                 {mapping[key].heading}
                 {mapping[key].sort && (
                   <SortIcon
@@ -39,17 +42,20 @@ class Table extends Component {
                     onSort={(order) => this.handleSort(key, order)}
                   />
                 )}
-              </td>
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {dataList.map((data) => (
-            <tr>
+          {dataList.map((data, i) => (
+            <tr key={i}>
               {keys.map((key) => (
-                <td>
+                <td
+                  key={key}
+                  className={mapping[key].hideInMobile ? "mobile-hide" : ""}
+                >
                   {mapping[key].renderField
-                    ? mapping[key].renderField(data[key])
+                    ? mapping[key].renderField(data)
                     : data[key]}
                 </td>
               ))}
