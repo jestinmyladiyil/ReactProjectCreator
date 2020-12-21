@@ -8,7 +8,8 @@ class Tabs extends Component {
     const activeIndexOnLoad =
       defaultActiveIndex &&
       defaultActiveIndex < tabsConfig.length &&
-      defaultActiveIndex >= 0
+      defaultActiveIndex >= 0 &&
+      !tabsConfig[defaultActiveIndex].disabled
         ? defaultActiveIndex
         : 0;
 
@@ -25,9 +26,11 @@ class Tabs extends Component {
   }
 
   handleTabChange = (item, index) => {
-    const { onTabChange } = this.props;
-    this.setState({ activeIndex: index });
-    onTabChange(item, index);
+    if (!item.disabled) {
+      const { onTabChange } = this.props;
+      this.setState({ activeIndex: index });
+      onTabChange(item, index);
+    }
   };
 
   render() {
@@ -44,17 +47,26 @@ class Tabs extends Component {
         {tabsConfig && tabsConfig.length > 0 && (
           <React.Fragment>
             <div className="head">
-              {tabsConfig.map((item, index) => (
-                <div
-                  key={index}
-                  className={`tab ${activeIndex === index ? "active" : ""}`}
-                  onClick={() =>
-                    activeIndex !== index && this.handleTabChange(item, index)
-                  }
-                >
-                  {item.head}
-                </div>
-              ))}
+              {tabsConfig.map((item, index) => {
+                let tabClasses = "tab";
+                if (item.disabled) {
+                  tabClasses += " disabled";
+                } else if (activeIndex === index) {
+                  tabClasses += " active";
+                }
+
+                return (
+                  <div
+                    key={index}
+                    className={tabClasses}
+                    onClick={() =>
+                      index !== activeIndex && this.handleTabChange(item, index)
+                    }
+                  >
+                    {item.head}
+                  </div>
+                );
+              })}
             </div>
             {<div className="body">{activeTab.body}</div>}
           </React.Fragment>

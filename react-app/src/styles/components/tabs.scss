@@ -1,6 +1,6 @@
 @import "../common.scss";
 
-.tabs.x {
+.tabs {
   .head {
     display: flex;
     border-radius: 6px;
@@ -11,27 +11,20 @@
       display: flex;
       align-items: center;
       padding: 0.6rem 1.2rem;
-      border-bottom: 4px solid #212121;
       transition: background-color 0.3s ease;
 
-      &.active {
-        border-color: #33b5e5;
-      }
-
-      &:not(.active) {
+      &:not(.active):not(.disabled):hover {
         cursor: pointer;
-      }
-
-      &:first-of-type {
-        margin-left: 1.2rem;
-      }
-
-      &:last-of-type {
-        margin-right: 1.2rem;
-      }
-
-      &:not(.active):hover {
         background-color: rgba(#000, 0.5);
+      }
+
+      &.active {
+        border-color: #33b5e5 !important;
+      }
+
+      &.disabled {
+        cursor: none;
+        opacity: 0.5;
       }
     }
   }
@@ -41,29 +34,31 @@
   }
 }
 
+.tabs.x {
+  .head {
+    .tab {
+      border-bottom: 4px solid #212121;
+
+      &:first-of-type {
+        margin-left: 1.2rem;
+      }
+
+      &:last-of-type {
+        margin-right: 1.2rem;
+      }
+    }
+  }
+}
+
 .tabs.y {
   display: flex;
 
   .head {
-    display: flex;
     flex-flow: column;
     flex: none;
-    border-radius: 6px;
-    color: #fff;
-    background-color: #212121;
 
     .tab {
-      padding: 0.6rem 1.2rem;
       border-right: 4px solid #212121;
-      transition: background-color 0.3s ease;
-
-      &.active {
-        border-color: #33b5e5;
-      }
-
-      &:not(.active) {
-        cursor: pointer;
-      }
 
       &:first-of-type {
         margin-top: 1.2rem;
@@ -72,14 +67,6 @@
       &:last-of-type {
         margin-bottom: 1.2rem;
       }
-
-      &:not(.active):hover {
-        background-color: rgba(#000, 0.5);
-      }
     }
-  }
-
-  .body {
-    padding: 1.2rem;
   }
 }

@@ -17,6 +17,12 @@ class TabsUsage extends Component {
       head: "Tab C",
       body: "Laboris laborum incididunt laboris eiusmod labore.",
     },
+    {
+      head: "Tab D",
+      body:
+        "Tempor ut et ea dolor incididunt consequat sit adipisicing laboris quis incididunt do.",
+      disabled: true,
+    },
   ];
 
   handleTabChange = (item, index) =>
@@ -69,6 +75,11 @@ tabsConfig = [
   {
     head: "Tab C",
     body: "Laboris laborum incididunt laboris eiusmod labore."
+  },
+  {
+    head: "Tab D",
+    body: "Tempor ut et ea dolor incididunt consequat sit adipisicing laboris quis incididunt do.",
+    disabled: true  // To disable the tab
   }
 ];
           `}
