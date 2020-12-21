@@ -24,7 +24,7 @@ class PaginationUsage extends Component {
         <h1>Pagination</h1>
         <br />
         <h3>Preview</h3>
-        <div>{this.code}</div>
+        {this.code}
         <br />
         <h3>Usage</h3>
         <CodeHighlighter language="html">

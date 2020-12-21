@@ -20,7 +20,7 @@ class LoaderUsage extends Component {
         <br />
         <br />
         <h3>Preview (Small Loader)</h3>
-        <div>{this.loaderCode}</div>
+        {this.loaderCode}
         <br />
         <h3>Usage (Small Loader)</h3>
         <CodeHighlighter>{this.loaderCode}</CodeHighlighter>

@@ -87,7 +87,7 @@ class TableUsage extends Component {
         <h1>Table</h1>
         <br />
         <h3>Preview</h3>
-        <div>{this.code}</div>
+        {this.code}
         <br />
         <h3>Usage</h3>
         <CodeHighlighter language="html">

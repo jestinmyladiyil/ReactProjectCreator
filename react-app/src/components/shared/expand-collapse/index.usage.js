@@ -18,7 +18,7 @@ class ExpandCollapseUsage extends Component {
         <h1>ExpandCollapse</h1>
         <br />
         <h3>Preview</h3>
-        <div>{this.code}</div>
+        {this.code}
         <br />
         <h3>Usage</h3>
         <CodeHighlighter language="html">
