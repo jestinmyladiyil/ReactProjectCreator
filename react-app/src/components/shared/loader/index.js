@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Loader extends Component {
   state = {};
@@ -16,5 +17,10 @@ class Loader extends Component {
     );
   }
 }
+
+Loader.propTypes = {
+  showFull: PropTypes.bool,
+  show: PropTypes.bool,
+};
 
 export default Loader;

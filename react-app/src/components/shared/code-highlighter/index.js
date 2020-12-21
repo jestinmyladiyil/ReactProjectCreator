@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Prism from "prismjs";
 import jsxToString from "jsx-to-string";
 import { isString, isObject } from "../../../utilities/utils";
+import PropTypes from "prop-types";
 
 class CodeHighlighter extends Component {
   state = {};
@@ -31,5 +32,10 @@ class CodeHighlighter extends Component {
     );
   }
 }
+
+CodeHighlighter.propTypes = {
+  children: PropTypes.node.isRequired,
+  language: PropTypes.string,
+};
 
 export default CodeHighlighter;

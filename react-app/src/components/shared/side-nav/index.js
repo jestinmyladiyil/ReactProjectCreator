@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ExpandCollapse from "./../expand-collapse/index";
 import Hamburger from "./../hamburger/index";
+import PropTypes from "prop-types";
 
 class SideNav extends Component {
   state = { showMenu: false };
@@ -112,5 +113,11 @@ class SideNav extends Component {
     );
   }
 }
+
+SideNav.propTypes = {
+  logo: PropTypes.object.isRequired,
+  menu: PropTypes.array.isRequired,
+  settings: PropTypes.object,
+};
 
 export default SideNav;

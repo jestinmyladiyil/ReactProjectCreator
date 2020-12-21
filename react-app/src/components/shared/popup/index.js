@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { isString } from "../../../utilities/utils";
+import PropTypes from "prop-types";
 
 class Popup extends Component {
   state = {};
@@ -71,5 +72,16 @@ class Popup extends Component {
     );
   }
 }
+
+Popup.propTypes = {
+  header: PropTypes.node.isRequired,
+  onClose: PropTypes.func,
+  children: PropTypes.node.isRequired,
+  primaryBtn: PropTypes.object,
+  secondaryBtn: PropTypes.object,
+  size: PropTypes.string,
+  position: PropTypes.string,
+  footer: PropTypes.node,
+};
 
 export default Popup;

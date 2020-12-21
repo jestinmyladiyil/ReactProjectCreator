@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Hamburger extends Component {
   state = {
@@ -25,5 +26,9 @@ class Hamburger extends Component {
     );
   }
 }
+
+Hamburger.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Hamburger;

@@ -6,6 +6,7 @@ import {
   faInfoCircle,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
 class AlertMessage extends Component {
   render() {
@@ -51,5 +52,10 @@ class AlertMessage extends Component {
     );
   }
 }
+
+AlertMessage.propTypes = {
+  messages: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default AlertMessage;

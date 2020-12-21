@@ -5,6 +5,7 @@ import {
   faSortDown,
   faSortUp,
 } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
 class SortIcon extends Component {
   render() {
@@ -23,5 +24,10 @@ class SortIcon extends Component {
     );
   }
 }
+
+SortIcon.propTypes = {
+  order: PropTypes.string,
+  onSort: PropTypes.func.isRequired,
+};
 
 export default SortIcon;

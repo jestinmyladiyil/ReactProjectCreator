@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Tabs extends Component {
   constructor(props) {
@@ -75,5 +76,13 @@ class Tabs extends Component {
     );
   }
 }
+
+Tabs.propTypes = {
+  tabsConfig: PropTypes.array.isRequired,
+  defaultActiveIndex: PropTypes.number,
+  onTabChange: PropTypes.func.isRequired,
+  callTabChangeOnLoad: PropTypes.bool,
+  direction: PropTypes.string,
+};
 
 export default Tabs;

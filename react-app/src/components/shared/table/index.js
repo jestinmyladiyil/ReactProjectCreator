@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SortIcon from "./../sort-icon/index";
+import PropTypes from "prop-types";
 
 class Table extends Component {
   state = {
@@ -66,5 +67,12 @@ class Table extends Component {
     );
   }
 }
+
+Table.propTypes = {
+  dataList: PropTypes.array.isRequired,
+  mapping: PropTypes.object.isRequired,
+  sortInit: PropTypes.object,
+  onSort: PropTypes.func,
+};
 
 export default Table;

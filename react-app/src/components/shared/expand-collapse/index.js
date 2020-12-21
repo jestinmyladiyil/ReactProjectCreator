@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 class ExpandCollapse extends Component {
   state = {
@@ -42,5 +43,11 @@ class ExpandCollapse extends Component {
     );
   }
 }
+
+ExpandCollapse.propTypes = {
+  collapse: PropTypes.bool,
+  collapsible: PropTypes.node.isRequired,
+  children: PropTypes.node,
+};
 
 export default ExpandCollapse;

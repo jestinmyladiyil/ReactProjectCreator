@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Pagination extends Component {
   state = {
@@ -94,5 +95,11 @@ class Pagination extends Component {
     );
   }
 }
+
+Pagination.propTypes = {
+  totalItems: PropTypes.number.isRequired,
+  onPaginate: PropTypes.func.isRequired,
+  paginateOnLoad: PropTypes.bool,
+};
 
 export default Pagination;

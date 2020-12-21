@@ -9,6 +9,7 @@ import {
   faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "./../hamburger/index";
+import PropTypes from "prop-types";
 
 class Header extends Component {
   state = { showMenu: false };
@@ -134,5 +135,11 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  logo: PropTypes.object.isRequired,
+  menu: PropTypes.array.isRequired,
+  settings: PropTypes.object,
+};
 
 export default Header;
