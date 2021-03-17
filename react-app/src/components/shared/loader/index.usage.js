@@ -1,32 +1,61 @@
 import React, { Component } from "react";
 import CodeHighlighter from "../code-highlighter";
 import Loader from "./index";
+import SmallLoader from "./smallLoader";
+import { showLoader, hideLoader } from "./../../../store/loading";
+import { connect } from "react-redux";
+import { withTranslation } from "react-i18next";
 
 class LoaderUsage extends Component {
-  fullpageLoaderCode = (<Loader showFull={true} />);
+  componentDidMount() {
+    this.props.showLoader();
+  }
 
-  loaderCode = (<Loader show={true} />);
+  componentWillUnmount() {
+    this.props.hideLoader();
+  }
 
   render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <h1>Loader</h1>
         <br />
-        <h3>Preview (Full Page Loader)</h3>
-        <div className="viewport">{this.fullpageLoaderCode}</div>
+        <h3>{t("preview")} (Full Page Loader)</h3>
+        <div className="viewport">
+          <Loader />
+        </div>
         <br />
-        <h3>Usage (Full Page Loader)</h3>
-        <CodeHighlighter>{this.fullpageLoaderCode}</CodeHighlighter>
+        <h3>{t("usage")} (Full Page Loader)</h3>
+        <CodeHighlighter language="html">
+          {`
+<Loader />
+          `}
+        </CodeHighlighter>
+        <CodeHighlighter language="js">
+          {`
+this.props.showLoader();
+this.props.hideLoader();
+          `}
+        </CodeHighlighter>
         <br />
         <br />
-        <h3>Preview (Small Loader)</h3>
-        {this.loaderCode}
+        <h3>{t("preview")} (Small Loader)</h3>
+        <SmallLoader show={true} />
         <br />
-        <h3>Usage (Small Loader)</h3>
-        <CodeHighlighter>{this.loaderCode}</CodeHighlighter>
+        <h3>{t("usage")} (Small Loader)</h3>
+        <CodeHighlighter language="html">
+          {`
+<SmallLoader show={true} />
+          `}
+        </CodeHighlighter>
       </React.Fragment>
     );
   }
 }
 
-export default LoaderUsage;
+const mapStateToProps = (state) => ({ loading: state.loading });
+
+export default connect(mapStateToProps, { showLoader, hideLoader })(
+  withTranslation()(LoaderUsage)
+);

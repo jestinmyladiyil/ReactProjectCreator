@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 
 class Pagination extends Component {
   state = {
@@ -31,19 +32,19 @@ class Pagination extends Component {
   };
 
   render() {
-    const { totalItems } = this.props;
+    const { totalItems, t } = this.props;
     const { currentPage, pageSize, startIndex, endIndex } = this.state;
     const totalPages = Math.ceil(totalItems / pageSize);
 
     return (
       <div className="pagination">
         <div className="section results">
-          Showing {startIndex} - {endIndex} of {totalItems} results
+          {t("showingPaginationResults", { startIndex, endIndex, totalItems })}
         </div>
 
         <div className="wrapper">
           <div className="section">
-            <span style={{ paddingRight: "0.5rem" }}>Items per page</span>
+            <span style={{ paddingRight: "0.5rem" }}>{t("itemsPerPage")}</span>
             <select value={pageSize} onChange={this.handlePageSizeChange}>
               {this.pageSizeOptions.map((option) => (
                 <option key={option} value={option}>
@@ -54,7 +55,7 @@ class Pagination extends Component {
           </div>
 
           <div className="section total-pages">
-            Page {currentPage} of {totalPages}
+            {t("showingPageNumber", { currentPage, totalPages })}
           </div>
 
           <div className="section">
@@ -62,7 +63,7 @@ class Pagination extends Component {
               className={currentPage === 1 ? "disabled" : ""}
               onClick={() => currentPage !== 1 && this.navigateTo(1)}
             >
-              First
+              {t("first")}
             </a>
             <a
               className={currentPage === 1 ? "disabled" : ""}
@@ -87,7 +88,7 @@ class Pagination extends Component {
                 currentPage !== totalPages && this.navigateTo(totalPages)
               }
             >
-              Last
+              {t("last")}
             </a>
           </div>
         </div>
@@ -102,4 +103,4 @@ Pagination.propTypes = {
   paginateOnLoad: PropTypes.bool,
 };
 
-export default Pagination;
+export default withTranslation()(Pagination);

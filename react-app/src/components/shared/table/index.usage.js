@@ -3,6 +3,7 @@ import CodeHighlighter from "../code-highlighter";
 import Table from "./index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { withTranslation } from "react-i18next";
 
 class TableUsage extends Component {
   dataList = [
@@ -82,14 +83,15 @@ class TableUsage extends Component {
   );
 
   render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <h1>Table</h1>
         <br />
-        <h3>Preview</h3>
+        <h3>{t("preview")}</h3>
         {this.code}
         <br />
-        <h3>Usage</h3>
+        <h3>{t("usage")}</h3>
         <CodeHighlighter language="html">
           {`
 <Table
@@ -173,4 +175,4 @@ handleSort = (key, order) => {
   }
 }
 
-export default TableUsage;
+export default withTranslation()(TableUsage);

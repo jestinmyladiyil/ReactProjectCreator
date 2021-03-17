@@ -1,26 +1,24 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class Loader extends Component {
-  state = {};
   render() {
-    const { show, showFull } = this.props;
+    const { loading } = this.props;
     return (
       <React.Fragment>
-        {showFull && (
+        {loading && (
           <div className="glasspane">
             <div className="spinner large"></div>
           </div>
         )}
-        {show && <div className="spinner small"></div>}
       </React.Fragment>
     );
   }
 }
 
-Loader.propTypes = {
-  showFull: PropTypes.bool,
-  show: PropTypes.bool,
-};
+Loader.propTypes = { loading: PropTypes.bool };
 
-export default Loader;
+const mapStateToProps = (state) => ({ loading: state.loading });
+
+export default connect(mapStateToProps)(Loader);

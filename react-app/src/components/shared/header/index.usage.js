@@ -8,6 +8,7 @@ import {
   faLaptopCode,
   faTachometerAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { withTranslation } from "react-i18next";
 
 class HeaderUsage extends Component {
   logo = {
@@ -53,14 +54,15 @@ class HeaderUsage extends Component {
   );
 
   render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <h1>Header</h1>
         <br />
-        <h3>Preview</h3>
+        <h3>{t("preview")}</h3>
         <div className="viewport">{this.code}</div>
         <br />
-        <h3>Usage</h3>
+        <h3>{t("usage")}</h3>
         <CodeHighlighter language="html">
           {`
 <Header
@@ -122,4 +124,4 @@ settings = {
   }
 }
 
-export default HeaderUsage;
+export default withTranslation()(HeaderUsage);

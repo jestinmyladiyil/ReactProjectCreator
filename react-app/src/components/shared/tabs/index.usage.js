@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CodeHighlighter from "../code-highlighter";
 import Tabs from "./index";
+import { withTranslation } from "react-i18next";
 
 class TabsUsage extends Component {
   tabsConfig = [
@@ -39,14 +40,15 @@ class TabsUsage extends Component {
   );
 
   render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <h1>Tabs</h1>
         <br />
-        <h3>Preview</h3>
+        <h3>{t("preview")}</h3>
         {this.getCode("x")}
         <br />
-        <h3>Usage</h3>
+        <h3>{t("usage")}</h3>
         <CodeHighlighter language="html">
           {`
 <Tabs
@@ -113,11 +115,11 @@ direction="x"  // Value can be 'x' or 'y'. Default value is 'x'.
           `}
         </CodeHighlighter>
         <br />
-        <h3>Preview (when direction="y")</h3>
+        <h3>{t("preview")} (when direction="y")</h3>
         {this.getCode("y")}
       </React.Fragment>
     );
   }
 }
 
-export default TabsUsage;
+export default withTranslation()(TabsUsage);

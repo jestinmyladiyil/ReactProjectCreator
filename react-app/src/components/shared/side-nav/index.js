@@ -10,6 +10,8 @@ import {
 import ExpandCollapse from "./../expand-collapse/index";
 import Hamburger from "./../hamburger/index";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
+import { resources } from "./../../../i18n";
 
 class SideNav extends Component {
   state = { showMenu: false };
@@ -39,10 +41,16 @@ class SideNav extends Component {
 
   toggleMenu = (isClose) => this.setState({ showMenu: isClose });
 
+  changeLanguage = (language) => {
+    const { i18n } = this.props;
+    i18n.changeLanguage(language);
+  };
+
   render() {
-    const { logo, menu, settings } = this.props;
+    const { logo, menu, settings, i18n, t } = this.props;
     const { userName, userCode, logoutUrl, changeLanguage, changeTheme } =
       settings || {};
+    const { language: selectedLanguage } = i18n || {};
     const { showMenu } = this.state;
 
     return (
@@ -88,16 +96,32 @@ class SideNav extends Component {
               ))}
 
             {changeLanguage && (
-              <div className="menu-item disabled">
+              <div className="menu-item disable-hover">
                 <FontAwesomeIcon className="icon" icon={faGlobe} />
-                <span>Change Language</span>
+                <span>
+                  <div>{t("changeLanguage")}</div>
+                  <div className="language-options">
+                    {resources &&
+                      Object.keys(resources).map((language) => (
+                        <div
+                          key={language}
+                          className={`language ${
+                            language === selectedLanguage && "selected"
+                          }`}
+                          onClick={() => this.changeLanguage(language)}
+                        >
+                          {language.toUpperCase()}
+                        </div>
+                      ))}
+                  </div>
+                </span>
               </div>
             )}
 
             {changeTheme && (
-              <div className="menu-item disabled">
+              <div className="menu-item disable-hover">
                 <FontAwesomeIcon className="icon" icon={faPalette} />
-                <span>Change Theme</span>
+                <span>{t("changeTheme")}</span>
               </div>
             )}
           </div>
@@ -105,7 +129,7 @@ class SideNav extends Component {
           {logoutUrl && (
             <a href={logoutUrl} className="menu-item logout">
               <FontAwesomeIcon className="icon" icon={faSignOutAlt} />
-              <span>Logout</span>
+              <span>{t("logout")}</span>
             </a>
           )}
         </nav>
@@ -120,4 +144,4 @@ SideNav.propTypes = {
   settings: PropTypes.object,
 };
 
-export default SideNav;
+export default withTranslation()(SideNav);

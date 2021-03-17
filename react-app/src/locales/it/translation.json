@@ -1,0 +1,20 @@
+{
+    "dashboard": "Pannello di controllo",
+    "layoutComponents": "Componenti del layout",
+    "formComponents": "Componenti del form",
+    "changeLanguage": "Cambia Lingua",
+    "changeTheme": "Cambia Tema",
+    "logout": "Disconnettersi",
+    "hi": "Ciao",
+    "preview": "Anteprima",
+    "usage": "Utilizzo",
+    "yes": "Si",
+    "no": "No",
+    "first": "Prima pagina",
+    "last": "Ultima pagina",
+
+    "This is your home page!": "Questa è la tua home page!",
+    "showingPaginationResults": "Mostrati {{startIndex}} - {{endIndex}} su {{totalItems}} risultati",
+    "itemsPerPage": "Oggetti per pagina",
+    "showingPageNumber": "Pagina {{currentPage}} di {{totalPages}}"
+}

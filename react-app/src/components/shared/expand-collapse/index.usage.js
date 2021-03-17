@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CodeHighlighter from "../code-highlighter";
 import ExpandCollapse from "./index";
+import { withTranslation } from "react-i18next";
 
 class ExpandCollapseUsage extends Component {
   code = (
@@ -13,14 +14,15 @@ class ExpandCollapseUsage extends Component {
   );
 
   render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <h1>ExpandCollapse</h1>
         <br />
-        <h3>Preview</h3>
+        <h3>{t("preview")}</h3>
         {this.code}
         <br />
-        <h3>Usage</h3>
+        <h3>{t("usage")}</h3>
         <CodeHighlighter language="html">
           {`
 <ExpandCollapse
@@ -45,4 +47,4 @@ class ExpandCollapseUsage extends Component {
   }
 }
 
-export default ExpandCollapseUsage;
+export default withTranslation()(ExpandCollapseUsage);

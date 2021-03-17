@@ -7,10 +7,12 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteMessage } from "./../../../store/messages";
 
 class AlertMessage extends Component {
   render() {
-    const { messages, onDelete } = this.props;
+    const { messages, deleteMessage } = this.props;
 
     return (
       <React.Fragment>
@@ -40,7 +42,7 @@ class AlertMessage extends Component {
                   <span>{item.message}</span>
                   <FontAwesomeIcon
                     icon={faTimes}
-                    onClick={() => onDelete(i)}
+                    onClick={() => deleteMessage(i)}
                     className="close-icon"
                   />
                 </div>
@@ -55,7 +57,9 @@ class AlertMessage extends Component {
 
 AlertMessage.propTypes = {
   messages: PropTypes.array.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  deleteMessage: PropTypes.func.isRequired,
 };
 
-export default AlertMessage;
+const mapStateToProps = (state) => ({ messages: state.messages });
+
+export default connect(mapStateToProps, { deleteMessage })(AlertMessage);

@@ -1,63 +1,50 @@
 import React, { Component } from "react";
 import CodeHighlighter from "../code-highlighter";
 import AlertMessage from "./index";
+import {
+  addSuccessMessage,
+  addErrorMessage,
+  addWarningMessage,
+  addInfoMessage,
+  deleteAllMessages,
+} from "./../../../store/messages";
+import { connect } from "react-redux";
+import { withTranslation } from "react-i18next";
 
 class AlertMessageUsage extends Component {
-  state = {
-    messages: [
-      { type: "SUCCESS", message: "This is a success message..." },
-      { type: "ERROR", message: "This is an error message..." },
-      { type: "WARNING", message: "This is a warning message..." },
-      { type: "INFO", message: "This is an info message..." },
-    ],
-  };
+  componentDidMount() {
+    this.props.addSuccessMessage("This is a success message!");
+    this.props.addErrorMessage("This is a error message!");
+    this.props.addWarningMessage("This is a warning message!");
+    this.props.addInfoMessage("This is a info message!");
+  }
 
-  deleteMessage = (index) => {
-    const messages = this.state.messages.filter((item, i) => index !== i);
-    this.setState({ messages });
-  };
+  componentWillUnmount() {
+    this.props.deleteAllMessages();
+  }
 
   render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <h1>AlertMessage</h1>
         <br />
-        <AlertMessage
-          messages={this.state.messages}
-          onDelete={this.deleteMessage}
-        />
+        <AlertMessage />
         <br />
-        <h3>Usage</h3>
+        <h3>{t("usage")}</h3>
         <CodeHighlighter language="html">
           {`
-<AlertMessage
-  messages={this.state.messages}
-  onDelete={this.deleteMessage}
-/>
+<AlertMessage />
           `}
         </CodeHighlighter>
         <br />
         To configure alert messages to be displayed
         <CodeHighlighter language="js">
           {`
-state = {
-  messages: [
-    { type: "SUCCESS", message: "This is a success message..." },
-    { type: "ERROR", message: "This is an error message..." },
-    { type: "WARNING", message: "This is a warning message..." },
-    { type: "INFO", message: "This is an info message..." }
-  ]
-};
-          `}
-        </CodeHighlighter>
-        <br />
-        Callback method to delete alert message on clicking close icon
-        <CodeHighlighter language="js">
-          {`
-deleteMessage = (index) => {
-  const messages = this.state.messages.filter((item, i) => index !== i);
-  this.setState({ messages });
-}
+this.props.addSuccessMessage("This is a success message!");
+this.props.addErrorMessage("This is a error message!");
+this.props.addWarningMessage("This is a warning message!");
+this.props.addInfoMessage("This is a info message!");
           `}
         </CodeHighlighter>
       </React.Fragment>
@@ -65,4 +52,12 @@ deleteMessage = (index) => {
   }
 }
 
-export default AlertMessageUsage;
+const mapStateToProps = (state) => ({ messages: state.messages });
+
+export default connect(mapStateToProps, {
+  addSuccessMessage,
+  addErrorMessage,
+  addWarningMessage,
+  addInfoMessage,
+  deleteAllMessages,
+})(withTranslation()(AlertMessageUsage));

@@ -13,6 +13,7 @@ import {
   faTable,
   faWindowRestore,
 } from "@fortawesome/free-solid-svg-icons";
+import i18n from "../../i18n";
 
 const navOptions = {
   logo: {
@@ -28,12 +29,12 @@ const navOptions = {
   },
   menu: [
     {
-      label: "Dashboard",
+      label: i18n.t("dashboard"),
       path: "/dashboard",
       icon: <FontAwesomeIcon icon={faHome} />,
     },
     {
-      label: "Layout Components",
+      label: i18n.t("layoutComponents"),
       icon: <FontAwesomeIcon icon={faLaptopCode} />,
       subMenu: [
         {
@@ -84,7 +85,7 @@ const navOptions = {
       ],
     },
     {
-      label: "Form Components",
+      label: i18n.t("formComponents"),
       icon: <FontAwesomeIcon icon={faFileCode} />,
       disabled: true,
       subMenu: [
@@ -105,5 +106,11 @@ const navOptions = {
     },
   ],
 };
+
+i18n.on("languageChanged", (language) => {
+  navOptions.menu[0].label = i18n.t("dashboard");
+  navOptions.menu[1].label = i18n.t("layoutComponents");
+  navOptions.menu[2].label = i18n.t("formComponents");
+});
 
 export default navOptions;

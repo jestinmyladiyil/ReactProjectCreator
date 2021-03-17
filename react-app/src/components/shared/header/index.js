@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "./../hamburger/index";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
+import { resources } from "./../../../i18n";
 
 class Header extends Component {
   state = { showMenu: false };
@@ -41,11 +43,16 @@ class Header extends Component {
 
   toggleMenu = (isClose) => this.setState({ showMenu: isClose });
 
+  changeLanguage = (language) => {
+    const { i18n } = this.props;
+    i18n.changeLanguage(language);
+  };
+
   render() {
-    const { logo, menu, settings } = this.props;
+    const { logo, menu, settings, i18n, t } = this.props;
     const { userName, userCode, logoutUrl, changeLanguage, changeTheme } =
       settings || {};
-
+    const { language: selectedLanguage } = i18n || {};
     const { showMenu } = this.state;
 
     return (
@@ -88,8 +95,10 @@ class Header extends Component {
                 <div className="menu-item">
                   <FontAwesomeIcon className="icon" icon={faUserCircle} />
                   <span>
-                    {userName || "Welcome"}
-                    <div className="user-code">{userCode}</div>
+                    {userName || userCode}
+                    {userName && userCode && (
+                      <div className="user-code">{userCode}</div>
+                    )}
                   </span>
                   <FontAwesomeIcon
                     icon={faAngleDown}
@@ -98,18 +107,34 @@ class Header extends Component {
                 </div>
                 <ul>
                   {changeLanguage && (
-                    <li className="disabled">
-                      <div className="menu-item">
+                    <li>
+                      <div className="menu-item disable-hover">
                         <FontAwesomeIcon className="icon" icon={faGlobe} />
-                        <span>Change Language</span>
+                        <span>
+                          <div>{t("changeLanguage")}</div>
+                          <div className="language-options">
+                            {resources &&
+                              Object.keys(resources).map((language) => (
+                                <div
+                                  key={language}
+                                  className={`language ${
+                                    language === selectedLanguage && "selected"
+                                  }`}
+                                  onClick={() => this.changeLanguage(language)}
+                                >
+                                  {language.toUpperCase()}
+                                </div>
+                              ))}
+                          </div>
+                        </span>
                       </div>
                     </li>
                   )}
                   {changeTheme && (
-                    <li className="disabled">
-                      <div className="menu-item">
+                    <li>
+                      <div className="menu-item disable-hover">
                         <FontAwesomeIcon className="icon" icon={faPalette} />
-                        <span>Change Theme</span>
+                        <span>{t("changeTheme")}</span>
                       </div>
                     </li>
                   )}
@@ -121,7 +146,7 @@ class Header extends Component {
                             className="icon"
                             icon={faSignOutAlt}
                           />
-                          <span>Logout</span>
+                          <span>{t("logout")}</span>
                         </div>
                       </a>
                     </li>
@@ -142,4 +167,4 @@ Header.propTypes = {
   settings: PropTypes.object,
 };
 
-export default Header;
+export default withTranslation()(Header);

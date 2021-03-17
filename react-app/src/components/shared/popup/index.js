@@ -3,6 +3,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { isString } from "../../../utilities/utils";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 
 class Popup extends Component {
   state = {};
@@ -17,6 +18,7 @@ class Popup extends Component {
       secondaryBtn,
       size, // small, medium, large, xlarge
       position, // center, top, bottom, right, left, top-right, top-left, bottom-right, bottom-left
+      t,
     } = this.props;
 
     const {
@@ -55,14 +57,14 @@ class Popup extends Component {
                   onClick={onSecondaryBtnClick || onClose}
                   disabled={primaryBtnDisabled}
                 >
-                  {secondaryBtnLabel || "No"}
+                  {secondaryBtnLabel || t("no")}
                 </button>
                 <button
                   className="primary"
                   onClick={onPrimaryBtnClick}
                   disabled={secondaryBtnDisabled}
                 >
-                  {primaryBtnLabel || "Yes"}
+                  {primaryBtnLabel || t("yes")}
                 </button>
               </React.Fragment>
             )}
@@ -84,4 +86,4 @@ Popup.propTypes = {
   footer: PropTypes.node,
 };
 
-export default Popup;
+export default withTranslation()(Popup);

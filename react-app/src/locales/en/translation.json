@@ -1,0 +1,20 @@
+{
+    "dashboard": "Dashboard",
+    "layoutComponents": "Layout Components",
+    "formComponents": "Form Components",
+    "changeLanguage": "Change Language",
+    "changeTheme": "Change Theme",
+    "logout": "Logout",
+    "hi": "Hi",
+    "preview": "Preview",
+    "usage": "Usage",
+    "yes": "Yes",
+    "no": "No",
+    "first": "First",
+    "last": "Last",
+
+    "This is your home page!": "This is your home page!",
+    "showingPaginationResults": "Showing {{startIndex}} - {{endIndex}} of {{totalItems}} results",
+    "itemsPerPage": "Items per page",
+    "showingPageNumber": "Page {{currentPage}} of {{totalPages}}"
+}

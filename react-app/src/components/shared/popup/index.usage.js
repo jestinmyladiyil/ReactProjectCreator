@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CodeHighlighter from "../code-highlighter";
 import Popup from "./index";
+import { withTranslation } from "react-i18next";
 
 class PopupUsage extends Component {
   state = {
@@ -39,12 +40,13 @@ class PopupUsage extends Component {
 
   render() {
     const { showPopup, size, position } = this.state;
+    const { t } = this.props;
 
     return (
       <React.Fragment>
         <h1>Popup</h1>
         <br />
-        <h3>Preview</h3>
+        <h3>{t("preview")}</h3>
         <p>Click the buttons to view popup in different size and position.</p>
         <div className="viewport popup-viewport">
           <button className="primary" onClick={this.openPopup(null, null)}>
@@ -81,7 +83,7 @@ class PopupUsage extends Component {
           {showPopup && this.getPopup(size, position)}
         </div>
         <br />
-        <h3>Usage</h3>
+        <h3>{t("usage")}</h3>
         <CodeHighlighter language="html">{`
 <Popup
   header="My Title"
@@ -158,4 +160,4 @@ footer = (
   }
 }
 
-export default PopupUsage;
+export default withTranslation()(PopupUsage);

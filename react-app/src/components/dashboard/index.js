@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { withTranslation } from "react-i18next";
 
 class Dashboard extends Component {
   state = {};
   render() {
-    return <h1>This is your home page!</h1>;
+    const { t } = this.props;
+    return <h1>{t("This is your home page!")}</h1>;
   }
 }
 
-export default Dashboard;
+export default withTranslation()(Dashboard);
